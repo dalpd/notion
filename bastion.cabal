@@ -1,0 +1,47 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 9ac9a737939670c40e163fdaf26c4abe000bcea91221b1fc65c9ab426a5ad3de
+
+name:           bastion
+version:        0.1.0.0
+synopsis:       A Haskell client library for the Notion API (Beta)
+category:       Web
+maintainer:     Deniz Alp Durmaz <denizalpd@ogr.iu.edu.tr>
+license:        BSD3
+build-type:     Simple
+extra-source-files:
+    README.md
+
+library
+  exposed-modules:
+      Bastion
+      Bastion.Types
+      Bastion.Types.API
+      Bastion.Types.Database
+      Bastion.Utils
+  other-modules:
+      Paths_bastion
+  hs-source-dirs:
+      src
+  default-extensions: DataKinds FlexibleContexts GADTs InstanceSigs LambdaCase OverloadedStrings PolyKinds RankNTypes RecordWildCards ScopedTypeVariables TypeApplications TypeOperators TypeFamilies
+  ghc-options: -Wall -O2 -fspecialise-aggressively
+  build-depends:
+      aeson
+    , base
+    , containers
+    , http-client
+    , http-client-tls
+    , lens
+    , load-env
+    , servant
+    , servant-client
+    , text
+    , time
+    , tls
+    , uri-bytestring
+    , uuid
+  default-language: Haskell2010

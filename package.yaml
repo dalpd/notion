@@ -1,0 +1,45 @@
+name: bastion
+version: 0.1.0.0
+synopsis: A Haskell client library for the Notion API (Beta)
+maintainer: Deniz Alp Durmaz <denizalpd@ogr.iu.edu.tr>
+category: Web
+license: BSD3
+  
+ghc-options: -Wall -O2 -fspecialise-aggressively
+
+default-extensions:
+  - DataKinds
+  - FlexibleContexts
+  - GADTs
+  - InstanceSigs
+  - LambdaCase
+  - OverloadedStrings
+  - PolyKinds
+  - RankNTypes
+  - RecordWildCards
+  - ScopedTypeVariables
+  - TypeApplications
+  - TypeOperators
+  - TypeFamilies  
+
+extra-source-files:
+  - README.md
+
+library:
+  source-dirs:
+    - src
+  dependencies:  
+    - aeson
+    - base
+    - containers
+    - http-client
+    - http-client-tls
+    - lens
+    - load-env
+    - servant
+    - servant-client
+    - text
+    - time
+    - tls
+    - uuid
+    - uri-bytestring
