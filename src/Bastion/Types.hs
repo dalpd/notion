@@ -3,7 +3,8 @@
 --
 -- https://docs.servant.dev/en/stable/cookbook/structuring-apis/StructuringApis.html
 module Bastion.Types
-  (
+  ( module API,
+    module DB,
   )
 where
 

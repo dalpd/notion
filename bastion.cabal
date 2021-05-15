@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 9ac9a737939670c40e163fdaf26c4abe000bcea91221b1fc65c9ab426a5ad3de
+-- hash: a51fb9ce12d9209eeb9581c66c8db45425b46957fa44debf497805db93642d9c
 
 name:           bastion
 version:        0.1.0.0
@@ -19,6 +19,7 @@ extra-source-files:
 library
   exposed-modules:
       Bastion
+      Bastion.Client
       Bastion.Types
       Bastion.Types.API
       Bastion.Types.Database
