@@ -1,4 +1,4 @@
-name: bastion
+name: notion
 version: 0.1.0.0
 synopsis: A Haskell client library for the Notion API (Beta)
 maintainer: Deniz Alp Durmaz <denizalpd@ogr.iu.edu.tr>

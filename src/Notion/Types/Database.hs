@@ -1,7 +1,7 @@
 {-# LANGUAGE DerivingStrategies         #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 -- |
-module Bastion.Types.Database
+module Notion.Types.Database
   ( -- *
     Database (..),
     -- TODO(dalp): Smart constructor for DatabaseId if we're sure they have to

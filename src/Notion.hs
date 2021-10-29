@@ -1,16 +1,16 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TemplateHaskell   #-}
 -- |
-module Bastion
+module Notion
   ( main
   )
 where
 
 ------------------------------------------------------------------------------
 
-import Bastion.Types
-import Bastion.Client as Client
-import Bastion.Utils as Utils
+import Notion.Types
+import Notion.Client as Client
+import Notion.Utils as Utils
 import Data.UUID (fromText)
 
 ------------------------------------------------------------------------------

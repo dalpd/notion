@@ -1,5 +1,5 @@
 -- | Shared utilities, things like type synonyms for headers and params.
-module Bastion.Utils
+module Notion.Utils
   ( -- *
     AuthorizationHeader,    
     VersionHeader,

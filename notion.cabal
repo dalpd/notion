@@ -3,10 +3,8 @@ cabal-version: 1.12
 -- This file has been generated from package.yaml by hpack version 0.34.4.
 --
 -- see: https://github.com/sol/hpack
---
--- hash: c07b7bc451b30ffe92dfa73f06931d4e664ca309852fe743180be84e6f897b85
 
-name:           bastion
+name:           notion
 version:        0.1.0.0
 synopsis:       A Haskell client library for the Notion API (Beta)
 category:       Web
@@ -18,14 +16,14 @@ extra-source-files:
 
 library
   exposed-modules:
-      Bastion
-      Bastion.Client
-      Bastion.Types
-      Bastion.Types.API
-      Bastion.Types.Database
-      Bastion.Utils
+      Notion
+      Notion.Client
+      Notion.Types
+      Notion.Types.API
+      Notion.Types.Database
+      Notion.Utils
   other-modules:
-      Paths_bastion
+      Paths_notion
   hs-source-dirs:
       src
   default-extensions:

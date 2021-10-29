@@ -10,13 +10,13 @@ let
 
   myHaskellPackages = baseHaskellPkgs.override {
     overrides = hself: hsuper: {
-      bastion = hself.callCabal2nix "bastion" (./.) {};
+      notion = hself.callCabal2nix "notion" (./.) {};
     };
   };
 
   shell = myHaskellPackages.shellFor {
     packages = p: with p; [
-      bastion
+      notion
     ];
 
     buildInputs = with pkgs.haskellPackages; [
@@ -45,5 +45,5 @@ in
 { inherit pkgs;
   inherit shell;
   inherit myHaskellPackages;
-  bastion = myHaskellPackages.bastion;
+  notion = myHaskellPackages.notion;
 }

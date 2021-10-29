@@ -1,16 +1,16 @@
 -- | Shared types for the <https://developers.notion.com Notion API> wrapper
--- <github.com/dalpd/bastion Bastion>.
+-- <github.com/dalpd/notion Notion>.
 --
 -- https://docs.servant.dev/en/stable/cookbook/structuring-apis/StructuringApis.html
-module Bastion.Types.API
+module Notion.Types.API
   ( retrieveDatabase
   )
 where
 
 ------------------------------------------------------------------------------
 
-import Bastion.Utils
-import Bastion.Types.Database
+import Notion.Utils
+import Notion.Types.Database
 import Data.Text (Text)
 import Data.Proxy
 import Servant.API

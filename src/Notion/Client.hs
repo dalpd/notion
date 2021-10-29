@@ -1,14 +1,14 @@
-module Bastion.Client
+module Notion.Client
   ( retrieveDatabase
   )
 where
 
 ------------------------------------------------------------------------------
 
-import Bastion.Types.Database
-import Bastion.Utils
+import Notion.Types.Database
+import Notion.Utils
 import Data.Text (Text, unpack)
-import qualified Bastion.Types.API as API
+import qualified Notion.Types.API as API
 import Servant.Client (BaseUrl (..), ClientEnv, ClientError, Scheme (Https), mkClientEnv, runClientM)
 
 import Network.HTTP.Client.TLS (tlsManagerSettings)
