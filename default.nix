@@ -1,4 +1,4 @@
-{ compiler ? "ghc865" }:
+{ compiler ? "ghc8107" }:
 
 let
   sources = import ./nix/sources.nix;
@@ -10,11 +10,7 @@ let
 
   myHaskellPackages = baseHaskellPkgs.override {
     overrides = hself: hsuper: {
-      bastion =
-        hself.callCabal2nix
-          "bastion"
-          (./.)
-          {};
+      bastion = hself.callCabal2nix "bastion" (./.) {};
     };
   };
 
@@ -46,7 +42,8 @@ let
 };
 
 in
-{
+{ inherit pkgs;
   inherit shell;
+  inherit myHaskellPackages;
   bastion = myHaskellPackages.bastion;
 }

@@ -1,10 +1,10 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.33.0.
+-- This file has been generated from package.yaml by hpack version 0.34.4.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: a51fb9ce12d9209eeb9581c66c8db45425b46957fa44debf497805db93642d9c
+-- hash: c07b7bc451b30ffe92dfa73f06931d4e664ca309852fe743180be84e6f897b85
 
 name:           bastion
 version:        0.1.0.0
@@ -28,7 +28,20 @@ library
       Paths_bastion
   hs-source-dirs:
       src
-  default-extensions: DataKinds FlexibleContexts GADTs InstanceSigs LambdaCase OverloadedStrings PolyKinds RankNTypes RecordWildCards ScopedTypeVariables TypeApplications TypeOperators TypeFamilies
+  default-extensions:
+      DataKinds
+      FlexibleContexts
+      GADTs
+      InstanceSigs
+      LambdaCase
+      OverloadedStrings
+      PolyKinds
+      RankNTypes
+      RecordWildCards
+      ScopedTypeVariables
+      TypeApplications
+      TypeOperators
+      TypeFamilies
   ghc-options: -Wall -O2 -fspecialise-aggressively
   build-depends:
       aeson
