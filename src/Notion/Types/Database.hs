@@ -4,8 +4,6 @@
 module Notion.Types.Database
   ( -- *
     Database (..),
-    -- TODO(dalp): Smart constructor for DatabaseId if we're sure they have to
-    -- be UUIDs at all times.
     DatabaseId (..),
   )
 where
@@ -340,7 +338,6 @@ instance FromJSON PropertyObject where
 newtype DatabaseId = DatabaseId { _databaseId :: UUID }
   deriving newtype Show
 
--- TODO(dalp): Maybe just newtype derive?
 instance FromJSON DatabaseId where
   parseJSON = A.withObject "DatabaseId" $ \o -> do
     _databaseId <- o A..: "id"

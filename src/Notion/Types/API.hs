@@ -1,7 +1,4 @@
--- | Shared types for the <https://developers.notion.com Notion API> wrapper
--- <github.com/dalpd/notion Notion>.
---
--- https://docs.servant.dev/en/stable/cookbook/structuring-apis/StructuringApis.html
+-- | Shared types for <github.com/dalpd/notion notion>.
 module Notion.Types.API
   ( retrieveDatabase
   )
@@ -18,7 +15,7 @@ import Servant.Client (ClientM, client)
 
 ------------------------------------------------------------------------------
 
--- | Type representation for the <https://developers.notion.com Notion API>.
+-- | Type representing <https://developers.notion.com Notion API>.
 type NotionAPI = DatabaseAPI -- :> PageAPI :> BlockAPI :> UserAPI :> SearchAPI
 
 type DatabaseAPI = "databases" :> RetrieveDatabase -- :<|> QueryDatabase :<|> ListDatabases

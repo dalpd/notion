@@ -4,13 +4,19 @@ let
   sources = import ./nix/sources.nix;
   pkgs = import sources.nixpkgs {};
 
-  inherit (pkgs.haskell.lib) dontCheck;
+  inherit (pkgs.lib) fakeSha256;
+  inherit (pkgs.haskell.lib) doJailbreak dontCheck enableCabalFlag packageSourceOverrides;
 
   baseHaskellPkgs = pkgs.haskell.packages.${compiler};
 
   myHaskellPackages = baseHaskellPkgs.override {
-    overrides = hself: hsuper: {
-      notion = hself.callCabal2nix "notion" (./.) {};
+    overrides = self: super: {
+      notion = self.callCabal2nix "notion" (./.) {};
+
+      # Preparation for ghc921
+      # blaze-markup = enableCabalFlag super.blaze-markup "--allow-newer=base";
+      # cryptohash-sha1 = doJailbreak super.cryptohash-sha1;
+      # sop-core = sop-core "0.5.1.0"
     };
   };
 
