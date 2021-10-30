@@ -15,11 +15,19 @@ import Servant.API
 import Servant.Client (ClientM, client)
 
 ------------------------------------------------------------------------------
-type NotionAPI = Databases
+type NotionAPI
+  = AuthorizationHeader
+  :> VersionHeader
+  :> Databases
 
 type Databases = "databases" :> RetrieveDatabase
 
-type RetrieveDatabase = AuthorizationHeader :> VersionHeader :> Capture "database_id" DatabaseId :> Get '[JSON] Database
+type RetrieveDatabase
+  = Capture "database_id" DatabaseId
+  :> Get '[JSON] Database
+
+-- TODO(dalp): Update response type to be a paginated result.
+type Search = "search" :> Text
 
 ------------------------------------------------------------------------------
 notionAPI :: Proxy NotionAPI

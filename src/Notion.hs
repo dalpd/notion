@@ -1,6 +1,3 @@
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE TemplateHaskell #-}
-
 -- |
 module Notion
   ( main,
@@ -15,7 +12,6 @@ import Notion.Types
 import Notion.Utils as Utils
 
 ------------------------------------------------------------------------------
-
 main :: IO ()
 main = do
   key <- Utils.accessKey "NOTION_API_KEY"
