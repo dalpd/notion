@@ -23,4 +23,4 @@ data RollupFunction
   | RollupFunction_Min
   | RollupFunction_Max
   | RollupFunction_Range
-  deriving stock Show
+  deriving stock (Show)

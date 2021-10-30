@@ -13,7 +13,7 @@ import Notion.Types.NumberConfigurationFormat
 
 -- | Available configuration capabilities for the number property.
 newtype NumberConfiguration = NumberConfiguration
-  { _numberConfiguration_format :: NumberConfigurationFormat
-    -- ^ How the number is displayed in Notion.
+  { -- | How the number is displayed in Notion.
+    _numberConfiguration_format :: NumberConfigurationFormat
   }
-  deriving stock Show
+  deriving stock (Show)

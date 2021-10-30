@@ -16,14 +16,14 @@ import Notion.Types.PropertyObjectType
 
 -- | Metadata that controls how a database property behaves.
 data PropertyObject = PropertyObject
-  { _propertyObject_id :: Text,
-    -- ^ The ID of the property, usually a short string of random letters and
+  { -- | The ID of the property, usually a short string of random letters and
     -- symbols. Some automatically generated property types have special
     -- human-readable IDs.
+    _propertyObject_id :: Text,
+    -- | Type that controls the behavior of the property.
     _propertyObject_type :: PropertyObjectType
-    -- ^ Type that controls the behavior of the property.
   }
-  deriving stock Show
+  deriving stock (Show)
 
 instance FromJSON PropertyObject where
   parseJSON = A.withObject "PropertyObject" $ \o -> do

@@ -20,4 +20,4 @@ data NumberConfigurationFormat
   | NumberConfigurationFormat_Rupee
   | NumberConfigurationFormat_Won
   | NumberConfigurationFormat_Yuan
-  deriving stock Show
+  deriving stock (Show)

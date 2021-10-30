@@ -17,7 +17,7 @@ data RichTextObjectType
   = RichTextObjectType_Text
   | RichTextObjectType_Mention
   | RichTextObjectType_Equation
-  deriving stock Show
+  deriving stock (Show)
 
 instance FromJSON RichTextObjectType where
   parseJSON = \case

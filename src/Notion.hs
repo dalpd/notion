@@ -1,26 +1,28 @@
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE TemplateHaskell   #-}
+{-# LANGUAGE TemplateHaskell #-}
+
 -- |
 module Notion
-  ( main
+  ( main,
   )
 where
 
 ------------------------------------------------------------------------------
 
-import Notion.Types
-import Notion.Client as Client
-import Notion.Utils as Utils
 import Data.UUID (fromText)
+import Notion.Client as Client
+import Notion.Types
+import Notion.Utils as Utils
 
 ------------------------------------------------------------------------------
 
 main :: IO ()
 main = do
   key <- Utils.accessKey "NOTION_API_KEY"
-  databaseId <- fromText <$> Utils.accessKey "DATABASE_ID" >>= \case
-    Nothing -> fail "Database id isn't valid UUID"
-    Just uuid -> pure uuid
+  databaseId <-
+    fromText <$> Utils.accessKey "DATABASE_ID" >>= \case
+      Nothing -> fail "Database id isn't valid UUID"
+      Just uuid -> pure uuid
   result <-
     Client.retrieveDatabase
       (Just key)

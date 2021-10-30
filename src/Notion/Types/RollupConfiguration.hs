@@ -14,20 +14,20 @@ import Notion.Types.RollupFunction
 
 -- | Available configuration capabilities for the rollup property.
 data RollupConfiguration = RollupConfiguration
-  { _rollupConfiguration_relationPropertyName :: Text,
-    -- ^ The name of the relation property this property is responsible for
+  { -- | The name of the relation property this property is responsible for
+    -- rolling up.
+    _rollupConfiguration_relationPropertyName :: Text,
+    -- | The id of the relation property this property is responsible for
     -- rolling up.
     _rollupConfiguration_relationPropertyId :: Text,
-    -- ^ The id of the relation property this property is responsible for
-    -- rolling up.
+    -- | The name of the property of the pages in the related database that is
+    -- used as an input to function.
     _rollupConfiguration_rollupPropertyName :: Text,
-    -- ^ The name of the property of the pages in the related database that is
+    -- | The id of the property of the pages in the related database that is
     -- used as an input to function.
     _rollupConfiguration_rollupPropertyId :: Text,
-    -- ^ The id of the property of the pages in the related database that is
-    -- used as an input to function.
-    _rollupConfiguration_function :: RollupFunction
-    -- ^ The function that is evaluated for every page in the relation of the
+    -- | The function that is evaluated for every page in the relation of the
     -- rollup.
+    _rollupConfiguration_function :: RollupFunction
   }
-  deriving stock Show
+  deriving stock (Show)

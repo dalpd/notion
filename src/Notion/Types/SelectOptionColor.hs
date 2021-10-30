@@ -19,4 +19,4 @@ data SelectOptionColor
   | SelectOptionColor_Purple
   | SelectOptionColor_Pink
   | SelectOptionColor_Red
-  deriving stock Show
+  deriving stock (Show)

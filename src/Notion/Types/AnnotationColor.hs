@@ -33,28 +33,30 @@ data AnnotationColor
   | AnnotationColor_PurpleBackground
   | AnnotationColor_PinkBackground
   | AnnotationColor_RedBackground
-  deriving stock Show
+  deriving stock (Show)
+
 -- TODO(dalp): Add `autoPrism`, `parseJSONWithPrism`, `toJSONWithPrism`
 -- helpers and define Aeson instances for sum types in terms of those.
 instance FromJSON AnnotationColor where
-  parseJSON = pure . \case
-    "default" -> AnnotationColor_Default
-    "gray" -> AnnotationColor_Gray
-    "brown" -> AnnotationColor_Brown
-    "orange" -> AnnotationColor_Orange
-    "yellow" -> AnnotationColor_Yellow
-    "green" -> AnnotationColor_Green
-    "blue" -> AnnotationColor_Blue
-    "purple" -> AnnotationColor_Purple
-    "pink" -> AnnotationColor_Pink
-    "red" -> AnnotationColor_Red
-    "gray_background" -> AnnotationColor_GrayBackground
-    "brown_background" -> AnnotationColor_BrownBackground
-    "orange_background" -> AnnotationColor_OrangeBackground
-    "yellow_background" -> AnnotationColor_YellowBackground
-    "green_background" -> AnnotationColor_GreenBackground
-    "blue_background" -> AnnotationColor_BlueBackground
-    "purple_background" -> AnnotationColor_PurpleBackground
-    "pink_background" -> AnnotationColor_PinkBackground
-    "red_background" -> AnnotationColor_RedBackground
-    _ -> AnnotationColor_Default
+  parseJSON =
+    pure . \case
+      "default" -> AnnotationColor_Default
+      "gray" -> AnnotationColor_Gray
+      "brown" -> AnnotationColor_Brown
+      "orange" -> AnnotationColor_Orange
+      "yellow" -> AnnotationColor_Yellow
+      "green" -> AnnotationColor_Green
+      "blue" -> AnnotationColor_Blue
+      "purple" -> AnnotationColor_Purple
+      "pink" -> AnnotationColor_Pink
+      "red" -> AnnotationColor_Red
+      "gray_background" -> AnnotationColor_GrayBackground
+      "brown_background" -> AnnotationColor_BrownBackground
+      "orange_background" -> AnnotationColor_OrangeBackground
+      "yellow_background" -> AnnotationColor_YellowBackground
+      "green_background" -> AnnotationColor_GreenBackground
+      "blue_background" -> AnnotationColor_BlueBackground
+      "purple_background" -> AnnotationColor_PurpleBackground
+      "pink_background" -> AnnotationColor_PinkBackground
+      "red_background" -> AnnotationColor_RedBackground
+      _ -> AnnotationColor_Default

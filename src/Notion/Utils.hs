@@ -1,7 +1,7 @@
 -- | Shared utilities, things like type synonyms for headers and params.
 module Notion.Utils
   ( -- *
-    AuthorizationHeader,    
+    AuthorizationHeader,
     VersionHeader,
     Version (..),
 
@@ -13,8 +13,8 @@ where
 ------------------------------------------------------------------------------
 
 import Data.Text (Text, pack)
-import Servant.API
 import LoadEnv
+import Servant.API
 import System.Environment
 
 ------------------------------------------------------------------------------
@@ -35,15 +35,15 @@ instance ToHttpApiData Version where
 -- |
 type VersionHeader = Header "Notion-Version" Version
 
-
 ------------------------------------------------------------------------------
 
 -- | A utility function to lookup a certain key in the .env file in the
 -- directory you're calling this function from. If you get a hit `accessKey`
 -- will return the associated value, and if not you get an error.
 accessKey :: String -> IO Text
-accessKey key = loadEnv >> lookupEnv key >>= \case
-  Just k -> pure $ pack k
-  Nothing -> error $ errorMsg key
+accessKey key =
+  loadEnv >> lookupEnv key >>= \case
+    Just k -> pure $ pack k
+    Nothing -> error $ errorMsg key
   where
     errorMsg k = "Couldn't find `" <> k <> "` in .env"

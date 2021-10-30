@@ -1,19 +1,18 @@
 module Notion.Client
-  ( retrieveDatabase
+  ( retrieveDatabase,
   )
 where
 
 ------------------------------------------------------------------------------
 
-import Notion.Types.Database
-import Notion.Utils
 import Data.Text (Text, unpack)
-import qualified Notion.Types.API as API
-import Servant.Client (BaseUrl (..), ClientEnv, ClientError, Scheme (Https), mkClientEnv, runClientM)
-
-import Network.HTTP.Client.TLS (tlsManagerSettings)
 import Network.HTTP.Client (newManager)
+import Network.HTTP.Client.TLS (tlsManagerSettings)
+import qualified Notion.API as API
+import Notion.Types (Database, DatabaseId)
+import Notion.Utils
 import Servant.API (toUrlPiece)
+import Servant.Client (BaseUrl (..), ClientEnv, ClientError, Scheme (Https), mkClientEnv, runClientM)
 
 ------------------------------------------------------------------------------
 

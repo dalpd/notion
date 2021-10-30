@@ -17,8 +17,8 @@ import Servant.API
 
 -- | Newtype wrapper over `UUID` to represent unique identifiers for
 -- databases.
-newtype DatabaseId = DatabaseId { _databaseId :: UUID }
-  deriving newtype Show
+newtype DatabaseId = DatabaseId {_databaseId :: UUID}
+  deriving newtype (Show)
 
 instance FromJSON DatabaseId where
   parseJSON = A.withObject "DatabaseId" $ \o -> do

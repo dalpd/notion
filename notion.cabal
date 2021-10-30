@@ -17,11 +17,11 @@ extra-source-files:
 library
   exposed-modules:
       Notion
+      Notion.API
       Notion.Client
       Notion.Types
       Notion.Types.AnnotationColor
       Notion.Types.Annotations
-      Notion.Types.API
       Notion.Types.CommonSelectOptions
       Notion.Types.Database
       Notion.Types.DatabaseId

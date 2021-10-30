@@ -15,20 +15,21 @@ import Notion.Types.AnnotationColor
 
 -- | Style information which applies to the whole rich text object.
 data Annotations = Annotations
-  { _annotations_bold :: Bool,
-    -- ^ Whether the text is bolded.
+  { -- | Whether the text is bolded.
+    _annotations_bold :: Bool,
+    -- | Whether the text is italicized.
     _annotations_italic :: Bool,
-    -- ^ Whether the text is italicized.
+    -- | Whether the text is struck through.
     _annotations_strikethrough :: Bool,
-    -- ^ Whether the text is struck through.
+    -- | Whether the text is underlined.
     _annotations_underline :: Bool,
-    -- ^ Whether the text is underlined.
+    -- | Whether the text is of code style.
     _annotations_code :: Bool,
-    -- ^ Whether the text is of code style.
+    -- | Color of the text.
     _annotations_color :: AnnotationColor
-    -- ^ Color of the text.
   }
-  deriving stock Show
+  deriving stock (Show)
+
 instance FromJSON Annotations where
   parseJSON = A.withObject "Annotations" $ \o -> do
     _annotations_bold <- o A..: "bold"

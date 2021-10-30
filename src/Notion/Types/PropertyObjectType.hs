@@ -9,11 +9,11 @@ where
 
 import Data.Aeson (FromJSON)
 import qualified Data.Aeson as A
-import Notion.Types.NumberConfiguration
+import Notion.Types.CommonSelectOptions
 import Notion.Types.FormulaConfiguration
+import Notion.Types.NumberConfiguration
 import Notion.Types.RelationConfiguration
 import Notion.Types.RollupConfiguration
-import Notion.Types.CommonSelectOptions
 
 ------------------------------------------------------------------------------
 
@@ -38,7 +38,7 @@ data PropertyObjectType
   | PropertyObjectType_CreatedBy
   | PropertyObjectType_LastEditedTime
   | PropertyObjectType_LastEditedBy
-  deriving stock Show
+  deriving stock (Show)
 
 instance FromJSON PropertyObjectType where
   parseJSON = \case

@@ -10,8 +10,8 @@ where
 import Data.Aeson (FromJSON)
 import qualified Data.Aeson as A
 import Data.Text (Text)
-import Notion.Types.RichTextObjectType
 import Notion.Types.Annotations
+import Notion.Types.RichTextObjectType
 
 ------------------------------------------------------------------------------
 
@@ -21,16 +21,17 @@ import Notion.Types.Annotations
 -- Arrays of rich text objectss are used within property objects and property
 -- value objects to create what a user sees as a single text value in Notion.
 data RichTextObject = RichTextObject
-  { _richTextObject_plainText :: Text,
-    -- ^ The plain text without annotations.
+  { -- | The plain text without annotations.
+    _richTextObject_plainText :: Text,
+    -- | The URL of any link or internal Notion mention in this text, if any.
     _richTextObject_href :: Maybe Text, -- TODO(dalp): Use uri-bytestring's URI
-    -- ^ The URL of any link or internal Notion mention in this text, if any.
-    _richTextObject_annotations :: Annotations,
-    -- ^ All annotations that apply to this rich text.
+
+    -- | All annotations that apply to this rich text.
     -- Annotations include colors and bold/italics/underline/strikethrough.
+    _richTextObject_annotations :: Annotations,
     _richTextObject_type :: RichTextObjectType
   }
-  deriving stock Show
+  deriving stock (Show)
 
 instance FromJSON RichTextObject where
   parseJSON = A.withObject "RichTextObject" $ \o -> do
