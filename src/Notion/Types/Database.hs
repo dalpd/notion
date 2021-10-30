@@ -7,11 +7,8 @@ where
 
 ------------------------------------------------------------------------------
 
-import Data.Aeson (FromJSON)
 import qualified Data.Aeson as A
-import Data.Map.Strict (Map)
-import Data.Text (Text)
-import Data.Time (UTCTime)
+import Notion.Prelude
 import Notion.Types.DatabaseId
 import Notion.Types.PropertyObject
 import Notion.Types.RichTextObject

@@ -7,9 +7,8 @@ where
 
 ------------------------------------------------------------------------------
 
-import Data.Aeson (FromJSON)
 import qualified Data.Aeson as A
-import Data.Text (Text)
+import Notion.Prelude
 import Notion.Types.PropertyObjectType
 
 ------------------------------------------------------------------------------

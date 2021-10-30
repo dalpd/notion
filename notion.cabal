@@ -19,6 +19,7 @@ library
       Notion
       Notion.API
       Notion.Client
+      Notion.Prelude
       Notion.Types
       Notion.Types.AnnotationColor
       Notion.Types.Annotations

@@ -1,19 +1,20 @@
 -- | Shared utilities, things like type synonyms for headers and params.
 module Notion.Utils
-  ( -- *
+  ( -- * Type definitions/synonmys
     AuthorizationHeader,
     VersionHeader,
     Version (..),
 
-    -- *
+    -- * Utility functions
     accessKey,
   )
 where
 
 ------------------------------------------------------------------------------
 
-import Data.Text (Text, pack)
+import qualified Data.Text as T
 import LoadEnv
+import Notion.Prelude
 import Servant.API
 import System.Environment
 
@@ -32,6 +33,8 @@ data Version = Version_V1
 instance ToHttpApiData Version where
   toUrlPiece Version_V1 = "v1"
 
+------------------------------------------------------------------------------
+
 -- |
 type VersionHeader = Header "Notion-Version" Version
 
@@ -43,7 +46,7 @@ type VersionHeader = Header "Notion-Version" Version
 accessKey :: String -> IO Text
 accessKey key =
   loadEnv >> lookupEnv key >>= \case
-    Just k -> pure $ pack k
+    Just k -> pure $ T.pack k
     Nothing -> error $ errorMsg key
   where
     errorMsg k = "Couldn't find `" <> k <> "` in .env"

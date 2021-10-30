@@ -7,9 +7,8 @@ where
 
 ------------------------------------------------------------------------------
 
-import Data.Aeson (FromJSON)
 import qualified Data.Aeson as A
-import Data.Text (Text)
+import Notion.Prelude
 import Notion.Types.Annotations
 import Notion.Types.RichTextObjectType
 
@@ -18,7 +17,7 @@ import Notion.Types.RichTextObjectType
 -- | Rich text objects contain data for displaying formatted text, mentions,
 -- and equations. A rich text object also contains annotations for style
 -- information.
--- Arrays of rich text objectss are used within property objects and property
+-- Arrays of rich text objects are used within property objects and property
 -- value objects to create what a user sees as a single text value in Notion.
 data RichTextObject = RichTextObject
   { -- | The plain text without annotations.

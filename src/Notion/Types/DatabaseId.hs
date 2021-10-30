@@ -7,10 +7,9 @@ where
 
 ------------------------------------------------------------------------------
 
-import Data.Aeson (FromJSON)
 import qualified Data.Aeson as A
-import Data.UUID (UUID)
 import qualified Data.UUID as UUID
+import Notion.Prelude
 import Servant.API
 
 ------------------------------------------------------------------------------

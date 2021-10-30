@@ -7,8 +7,8 @@ where
 
 ------------------------------------------------------------------------------
 
-import Data.Aeson (FromJSON)
 import qualified Data.Aeson as A
+import Notion.Prelude
 import Notion.Types.AnnotationColor
 
 ------------------------------------------------------------------------------

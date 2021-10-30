@@ -7,7 +7,7 @@ where
 ------------------------------------------------------------------------------
 
 import Data.Proxy
-import Data.Text (Text)
+import Notion.Prelude
 import Notion.Types (DatabaseId)
 import Notion.Types.Database
 import Notion.Utils
