@@ -1,6 +1,6 @@
 name: notion
 version: 0.1.0.0
-synopsis: A Haskell client library for the Notion API (Beta)
+synopsis: Unofficial Notion Haskell Client
 maintainer: Deniz Alp Durmaz <denizalpd@ogr.iu.edu.tr>
 category: Web
 license: BSD3
@@ -9,8 +9,10 @@ ghc-options: -Wall -O2 -fspecialise-aggressively
 
 default-extensions:
   - DataKinds
+  - DerivingStrategies
   - FlexibleContexts
   - GADTs
+  - GeneralizedNewtypeDeriving
   - InstanceSigs
   - LambdaCase
   - OverloadedStrings

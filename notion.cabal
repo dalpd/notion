@@ -6,7 +6,7 @@ cabal-version: 1.12
 
 name:           notion
 version:        0.1.0.0
-synopsis:       A Haskell client library for the Notion API (Beta)
+synopsis:       Unofficial Notion Haskell Client
 category:       Web
 maintainer:     Deniz Alp Durmaz <denizalpd@ogr.iu.edu.tr>
 license:        BSD3
@@ -19,8 +19,23 @@ library
       Notion
       Notion.Client
       Notion.Types
+      Notion.Types.AnnotationColor
+      Notion.Types.Annotations
       Notion.Types.API
+      Notion.Types.CommonSelectOptions
       Notion.Types.Database
+      Notion.Types.DatabaseId
+      Notion.Types.FormulaConfiguration
+      Notion.Types.NumberConfiguration
+      Notion.Types.NumberConfigurationFormat
+      Notion.Types.PropertyObject
+      Notion.Types.PropertyObjectType
+      Notion.Types.RelationConfiguration
+      Notion.Types.RichTextObject
+      Notion.Types.RichTextObjectType
+      Notion.Types.RollupConfiguration
+      Notion.Types.RollupFunction
+      Notion.Types.SelectOptionColor
       Notion.Utils
   other-modules:
       Paths_notion
@@ -28,8 +43,10 @@ library
       src
   default-extensions:
       DataKinds
+      DerivingStrategies
       FlexibleContexts
       GADTs
+      GeneralizedNewtypeDeriving
       InstanceSigs
       LambdaCase
       OverloadedStrings
