@@ -16,7 +16,7 @@ main :: IO ()
 main = do
   key <- Utils.accessKey "NOTION_API_KEY"
   databaseId <-
-    fromText <$> Utils.accessKey "DATABASE_ID" >>= \case
+    fromText<$> Utils.accessKey "DATABASE_ID" >>= \case
       Nothing -> fail "Database id isn't valid UUID"
       Just uuid -> pure uuid
   result <-

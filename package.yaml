@@ -4,7 +4,7 @@ synopsis: Unofficial Notion Haskell Client
 maintainer: Deniz Alp Durmaz <denizalpd@ogr.iu.edu.tr>
 category: Web
 license: BSD3
-  
+cabal-version: 1.18
 ghc-options: -Wall -O2 -fspecialise-aggressively
 
 default-extensions:
