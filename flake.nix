@@ -3,7 +3,7 @@
 
   # inputs is an attribute set of all the dependencies of the flake.
   inputs = {
-    nixpkgs.follows = "nixpkgs-release";
+    nixpkgs.follows = "haskell-updates";
     # The following:
     # > nixpkgs.url = "github:NixOS/nixpkgs"
     # points nixpkgs to the latest commit on the default branch but we can
@@ -14,8 +14,10 @@
     # > nixpkgs.url = "github:nixos/nixpkgs/<branch>"
     # Here we declare the release branch we want to track:
     nixpkgs-release = { url = "github:NixOS/nixpkgs/release-21.11"; };
-    # Defining in case we end up needing packages from nixpkgs-unstable.
+    # Here nixpkgs-unstable:
     nixpkgs-unstable = { url = "github:NixOS/nixpkgs/nixpkgs-unstable"; };
+    # And finally haskell-updates:
+    haskell-updates = { url = "github:NixOS/nixpkgs/haskell-updates"; };
 
     # Pure Nix flake utility functions:
     # > https://github.com/numtide/flake-utils
@@ -28,34 +30,53 @@
       url = "github:edolstra/flake-compat";
       flake = false;
     };
-
-    servant = {
-      url = "github:haskell-servant/servant";
-      flake = false;
-    };
   };
 
   # outputs is a function of one argument that takes an attribute set of all
   # the realized inputs, and outputs another attribute set.
-  outputs =
-    inputs@{ self, nixpkgs, nixpkgs-unstable, flake-compat, flake-utils, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, flake-compat, ... }:
     # TODO: Since callCabal2nix uses IFD, adding multiple systems to
     # supportedSystems doesn't currently work with flakes. Commands like
     # `nix flake check` and `nix flake show` will fail:
     # > https://github.com/NixOS/nix/issues/4265
     #
-    # So alternatively we could just provide the following:
-    # > supportedSystems = [ "x86_64-linux" ];
-    flake-utils.lib.eachDefaultSystem (system:
-      let config = import ./nix/config.nix;
-          version = builtins.substring 0 8 self.lastModifiedDate;
-          overlays = final: prev:
-            let overlays = import ./nix/overlays;
-            in prev.lib.composeManyExtensions overlays final prev;
-          pkgs = import nixpkgs { inherit system overlays config; };
-          haskellPackages = pkgs.haskell.packages.${config.compiler};
-    in
-      {
-      };
+    # If it wasn't for that we could use `flake-utils.lib.eachDefaultSystem`
+    let
+      supportedSystems = [ "x86_64-linux" ];
+      config = import ./nix/config.nix;
+      forAllSystems = f:
+        nixpkgs.lib.genAttrs supportedSystems (system: f system);
+      nixpkgsFor = forAllSystems (system:
+        import nixpkgs {
+          inherit system config;
+          overlays = [ self.overlay ];
+        });
+    in {
+      overlay = final: prev:
+        let overlays = import ./nix/overlays.nix;
+        in prev.lib.composeManyExtensions overlays final prev;
+      # Executed by `nix build notion`
+      packages = forAllSystems (system:
+        let pkgs = nixpkgsFor.${system};
+        in { notion = pkgs.notion-with-packages; });
 
+  # Executed by `nix flake check`
+  checks = forAllSystems (system: self.packages.${system}.notion);
+  # Executed by `nix build .`
+  defaultPackage = forAllSystems (system: self.packages.${system}.notion);
+  # Used by `nix develop`
+  devShell = forAllSystems (system: nixpkgsFor.${system}.notionShell);
+  # For when you have an executable:
+  #
+  # Executed by `nix run . -- <args?>`
+  # defaultApp = forAllSystems (system: self.apps.${system}.notion);
+  #
+  # Executed by `nix run .#<name>`
+  # apps = forAllSystems (system: {
+  #   notion = {
+  #     type = "app";
+  #     program = "${self.packages.${system}.notion}/bin/notion"
+  #   }
+  # });
+};
 }

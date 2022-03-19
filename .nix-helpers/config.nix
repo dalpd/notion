@@ -2,6 +2,7 @@
   allowBroken = false;
   allowUnfree = false;
   allowUnsupportedSystem = false;
-  compiler = "ghc921";
+  compiler = "ghc902";
+  withHaddocks = true;
   withHoogle = true;
 }
