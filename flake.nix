@@ -42,10 +42,9 @@
     #
     # If it wasn't for that we could use `flake-utils.lib.eachDefaultSystem`
     let
-      supportedSystems = [ "x86_64-linux" ];
-      config = import ./nix/config.nix;
+      config = import ./.nix-helpers/config.nix;
       forAllSystems = f:
-        nixpkgs.lib.genAttrs supportedSystems (system: f system);
+        nixpkgs.lib.genAttrs config.supportedSystems (system: f system);
       nixpkgsFor = forAllSystems (system:
         import nixpkgs {
           inherit system config;
@@ -53,7 +52,7 @@
         });
     in {
       overlay = final: prev:
-        let overlays = import ./nix/overlays.nix;
+        let overlays = import ./.nix-helpers/overlays.nix;
         in prev.lib.composeManyExtensions overlays final prev;
       # Executed by `nix build notion`
       packages = forAllSystems (system:

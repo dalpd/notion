@@ -49,7 +49,9 @@ let
     #
     # Either this, or notionKnownWorkingHaskellPkgSet can be changed in an overlay
     # if you want to use a different GHC to build Notion.
-    notionCompilerVersion = "ghc902";
+    notionCompilerVersion =
+      let config = import ./config.nix;
+      in config.compiler;
 
     # A Haskell package set where we know the GHC version works to compile
     # Notion.  This is basically just a shortcut so that other Nix files
@@ -76,7 +78,6 @@ let
         # then they don't have to be compiled from scratch.
         convenientNativeBuildTools = [
           self.cabal-install
-          self.glade
           self.haskellPackages.ghcid
           self.hlint
         ];
