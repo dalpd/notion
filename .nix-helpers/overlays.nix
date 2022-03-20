@@ -30,14 +30,10 @@ let
                     ! any (flip hasPrefix (baseNameOf path)) [ "dist" ".ghc" ];
                 };
 
-              extraCabal2nixOptions =
-                self.lib.optionalString self.notionBuildExamples "-fbuildexamples";
-
               notionDrv =
-                hself.callCabal2nixWithOptions
+                hself.callCabal2nix
                   "notion"
                   src
-                  extraCabal2nixOptions
                   {
                   };
             in
@@ -58,9 +54,6 @@ let
     # don't need to figure out the correct compiler version to use when it is
     # not given by the user.
     notionKnownWorkingHaskellPkgSet = self.haskell.packages.${self.notionCompilerVersion};
-
-    # See ./nixpkgs.nix for an explanation of that this does.
-    notionBuildExamples = false;
 
     # See ./nixpkgs.nix for an explanation of that this does.
     notionIndexNotion = false;
@@ -104,14 +97,10 @@ let
     # This is only used if the user doesn't specify the extraHaskellPackages
     # option.
     notionExtraHaskellPackages = hpkgs: with hpkgs; [
-      colour
-      lens
     ];
 
     notion-with-packages =
       let
-        # GHC environment that has notion available, as well as the packages
-        # specified above in extraHaskellPackages.
         env =
           self.notionKnownWorkingHaskellPkgSet.ghcWithPackages
             (hpkgs: [ hpkgs.notion ] ++ self.notionExtraHaskellPackages hpkgs);
@@ -123,15 +112,6 @@ let
         ];
         nativeBuildInputs = [];
         dontBuild = true;
-        unpackPhase = ":";
-        # Using installPhase instead of buildCommand was recommended here:
-        # https://github.com/cdepillabout/notion/pull/109
-        installPhase = ''
-          runHook preInstall
-          mkdir -p $out/bin
-          ln -sf ${env}/bin/notion $out/bin/notion
-          runHook postInstall
-        '';
         preferLocalBuild = true;
         allowSubstitutes = false;
       };

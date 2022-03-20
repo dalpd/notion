@@ -10,9 +10,6 @@
   nixpkgs ? null
 , # Additional overlays to apply when importing nixpkgs.
   additionalOverlays ? []
-, # Build all the examples bundled with notion.  Normally this is only used
-  # in CI for testing that the examples all still compile.
-  buildExamples ? false
 , # This is only used for `notionShell`.
   #
   # If this is `true`, Hoogle will also index the Notion libraries,
@@ -43,8 +40,6 @@ let
   notionOptionsOverlay = self: super: {
     notionCompilerVersion =
       if isNull compiler then super.notionCompilerVersion else compiler;
-
-    notionBuildExamples = buildExamples;
 
     notionIndexNotion = indexNotion;
 

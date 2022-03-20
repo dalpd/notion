@@ -27,7 +27,6 @@
 { compiler ? null
 , indexNotion ? false
 , nixpkgs ? null
-, buildExamples ? false
 , additionalOverlays ? []
 }@args:
 
