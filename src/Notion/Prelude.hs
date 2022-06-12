@@ -11,5 +11,6 @@ import Data.Map.Strict as X (Map)
 import Data.Text as X (Text)
 import Data.Time as X (UTCTime)
 import Data.UUID as X (UUID)
+import Numeric.Natural as X (Natural)
 
 ------------------------------------------------------------------------------
