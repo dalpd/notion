@@ -1,8 +1,5 @@
 -- |
-module Notion.Pagination
-  (
-  )
-  where
+module Notion.Pagination where
 
 ------------------------------------------------------------------------------
 

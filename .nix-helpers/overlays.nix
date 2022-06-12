@@ -91,6 +91,11 @@ let
             withHoogle = true;
             packages = hpkgs: [ hpkgs.notion ];
             nativeBuildInputs = notionEnv.nativeBuildInputs ++ convenientNativeBuildTools;
+            shellHook = ''
+              set -e
+              hpack
+              set +e
+            '';
           };
 
     # Default Haskell packages that you can use in your Notion configuration.
@@ -114,6 +119,7 @@ let
         dontBuild = true;
         preferLocalBuild = true;
         allowSubstitutes = false;
+
       };
   };
 in
